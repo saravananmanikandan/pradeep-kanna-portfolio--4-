@@ -256,7 +256,7 @@ export const Hero: React.FC = () => {
                 <motion.span
                   key={index}
                   variants={letterVars}
-                  className={`inline-block ${char === " " ? "w-[3vw]" : ""} ${index > 7 ? 'text-accent-aqua' : 'text-slate-900 dark:text-white'}`}
+                  className={`inline-block ${char === " " ? "w-[3vw]" : ""} ${index > 7 ? 'text-[#651FFF]' : 'text-slate-900 dark:text-white'}`}
                   style={{
                     textShadow: '0 0 30px rgba(163,180,214,0.2)'
                   }}
@@ -268,7 +268,7 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Draggable Polaroid */}
-          <motion.div
+          {/* <motion.div
             drag
             dragConstraints={{ left: -300, right: 300, top: -200, bottom: 200 }}
             whileHover={{ scale: 1.05, rotate: 2, cursor: 'grab' }}
@@ -285,7 +285,7 @@ export const Hero: React.FC = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Decorative Elements */}
           <div className="absolute top-10 left-10 text-slate-300 dark:text-white/10 hidden md:block animate-pulse">
