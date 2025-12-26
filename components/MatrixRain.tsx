@@ -59,18 +59,19 @@ const MatrixRain = () => {
         const frameInterval = 1000 / fps;
 
         // Palette Colors
+        const brandBlue = '#651FFF';
         const colors = {
             light: {
-                text: '#111111', // Brand Black
-                head: '#917FF0', // Accent Purple (Head)
-                fade: 'rgba(255, 255, 255, 0.2)', // Fade to White
-                highlight: '#917FF0' // Accent Purple (Hover)
+                text: brandBlue,
+                head: '#8B5CF6', // Lighter violet
+                fade: 'rgba(255, 255, 255, 0.2)',
+                highlight: '#111'
             },
             dark: {
-                text: '#3FAD4B', // Accent Green
-                head: '#72D2BE', // Accent Aqua (Head)
-                fade: 'rgba(26, 26, 26, 0.2)', // Fade to Dark (#1A1A1A approx)
-                highlight: '#FFFFFF' // White (Hover)
+                text: brandBlue,
+                head: '#A78BFA', // Light purple
+                fade: 'rgba(26, 26, 26, 0.2)',
+                highlight: '#FFFFFF'
             }
         };
 
@@ -151,8 +152,7 @@ const MatrixRain = () => {
                 ref={canvasRef}
                 className="block w-full h-full"
             />
-            {/* Overlay vignette or scanlines (optional) */}
-            <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 bg-[length:100%_2px,3px_100%] bg-repeat" />
+            {/* Overlay removed */}
         </div>
     );
 };
