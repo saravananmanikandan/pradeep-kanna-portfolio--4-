@@ -58,6 +58,22 @@ const MatrixRain = () => {
         const fps = 30; // Limit FPS for classic matrix feel
         const frameInterval = 1000 / fps;
 
+        // Palette Colors
+        const colors = {
+            light: {
+                text: '#111111', // Brand Black
+                head: '#917FF0', // Accent Purple (Head)
+                fade: 'rgba(255, 255, 255, 0.2)', // Fade to White
+                highlight: '#917FF0' // Accent Purple (Hover)
+            },
+            dark: {
+                text: '#3FAD4B', // Accent Green
+                head: '#72D2BE', // Accent Aqua (Head)
+                fade: 'rgba(26, 26, 26, 0.2)', // Fade to Dark (#1A1A1A approx)
+                highlight: '#FFFFFF' // White (Hover)
+            }
+        };
+
         const draw = (currentTime: number) => {
             const deltaTime = currentTime - lastTime;
 
@@ -66,57 +82,41 @@ const MatrixRain = () => {
             if (deltaTime < frameInterval) return;
             lastTime = currentTime - (deltaTime % frameInterval);
 
-            // Semi-transparent black for trail effect
-            // Use theme-aware background color in real app, but Matrix is usually dark
-            ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
+            // Check Theme
+            const isDark = document.documentElement.classList.contains('dark');
+            const theme = isDark ? colors.dark : colors.light;
+
+            // Fade effect
+            ctx.fillStyle = theme.fade;
             ctx.fillRect(0, 0, width, height);
 
             ctx.font = `${fontSize}px monospace`;
 
             for (let i = 0; i < drops.length; i++) {
-                // Pick a random character
                 const text = charArray[Math.floor(Math.random() * charArray.length)];
-
                 const x = i * fontSize;
                 const y = drops[i] * fontSize;
 
-                // Distance from mouse
                 const dist = Math.hypot(x - mouseX, y - mouseY);
                 const isHovered = dist < 100;
 
-                // Color logic
                 if (isHovered) {
-                    // White/Bright Green near mouse
-                    ctx.fillStyle = '#fff';
-                    // ctx.shadowBlur = 10;
-                    // ctx.shadowColor = '#fff';
+                    ctx.fillStyle = theme.highlight;
                 } else {
-                    // Standard Green
-                    // Randomly vary opacity/brightness for depth
                     const isHead = Math.random() > 0.95;
-                    if (isHead) {
-                        ctx.fillStyle = '#4ADE80'; // Bright green head
-                    } else {
-                        ctx.fillStyle = '#0F0'; // Standard green
-                    }
-                    // ctx.shadowBlur = 0;
+                    ctx.fillStyle = isHead ? theme.head : theme.text;
                 }
 
-                // Draw the character
                 ctx.fillText(text, x, y);
 
-                // Reset drop to top randomly after it has crossed the screen
-                // or randomly with small chance
                 if (y > height && Math.random() > 0.975) {
                     drops[i] = 0;
                 }
 
-                // Increment y
                 drops[i]++;
             }
         };
 
-        // Need to start the loop
         const animationId = requestAnimationFrame(draw);
 
         const handleResize = () => {
@@ -127,9 +127,7 @@ const MatrixRain = () => {
             canvas.height = height * dpr;
             ctx.scale(dpr, dpr);
 
-            // Re-calculate columns
             const newColumns = Math.ceil(width / fontSize);
-            // Preserve existing drops if possible, add new ones if wider
             if (newColumns > drops.length) {
                 for (let i = drops.length; i < newColumns; i++) {
                     drops[i] = Math.random() * -100;
@@ -148,7 +146,7 @@ const MatrixRain = () => {
     }, []);
 
     return (
-        <div ref={containerRef} className="w-full h-full bg-black relative overflow-hidden">
+        <div ref={containerRef} className="w-full h-full bg-transparent relative overflow-hidden">
             <canvas
                 ref={canvasRef}
                 className="block w-full h-full"

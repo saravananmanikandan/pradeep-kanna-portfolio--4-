@@ -172,7 +172,7 @@ export const Hero: React.FC = () => {
                 href="https://topmate.io/pradeep_kanna12/"
                 target="_blank"
                 rel="noreferrer"
-                className="h-10 px-4 flex items-center justify-center rounded-full bg-white dark:bg-white hover:bg-accent-green hover:text-white dark:hover:bg-accent-green text-slate-500 dark:text-slate-400 transition-all duration-300 group/topmate"
+                className="h-10 px-4 flex items-center justify-center rounded-full bg-[#000] dark:bg-white hover:bg-accent-green hover:text-white dark:hover:bg-accent-green text-slate-500 dark:text-slate-400 transition-all duration-300 group/topmate"
                 title="Topmate"
               >
                 <img
