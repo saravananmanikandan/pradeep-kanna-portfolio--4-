@@ -1,185 +1,11 @@
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDownRight, Move, Circle, Linkedin, Mail, Twitter, Link } from 'lucide-react';
-import { MemoryGame } from './MemoryGame';
+import { ArrowDownRight, Move, Linkedin, Mail, Twitter } from 'lucide-react';
+import MatrixRain from './MatrixRain';
 
-// --- Physics Circles Component (Bouncing Balls) ---
-const PhysicsCircles = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+// PhysicsCircles component removed
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    // Handle High DPI displays
-    const dpr = window.devicePixelRatio || 1;
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
-
-    let width = rect.width;
-    let height = rect.height;
-
-    // Physics constants
-    const gravity = 0.5;
-    const friction = 0.8;
-    const mouseForceRadius = 150;
-
-    // Theme colors
-    const colors = [
-      '#FCD748', // Yellow
-      '#917FF0', // Purple
-      '#72D2BE', // Aqua
-      '#F97F7A', // Red
-      '#61ADEB', // Blue
-      '#3FAD4B'  // Green
-    ];
-
-    class Ball {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      radius: number;
-      color: string;
-      originalRadius: number;
-
-      constructor() {
-        this.radius = Math.random() * 20 + 10;
-        this.originalRadius = this.radius;
-        this.x = Math.random() * (width - this.radius * 2) + this.radius;
-        this.y = Math.random() * (height / 2); // Start in top half
-        this.vx = (Math.random() - 0.5) * 8;
-        this.vy = Math.random() * 5;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-      }
-
-      update() {
-        // Gravity
-        this.vy += gravity;
-
-        // Apply velocity
-        this.x += this.vx;
-        this.y += this.vy;
-
-        // Floor collision
-        if (this.y + this.radius > height) {
-          this.y = height - this.radius;
-          this.vy *= -friction; // Bounce with energy loss
-
-          // Prevent micro-bouncing
-          if (Math.abs(this.vy) < gravity * 2) {
-            this.vy = 0;
-          }
-        }
-        // Ceiling collision
-        else if (this.y - this.radius < 0) {
-          this.y = this.radius;
-          this.vy *= -friction;
-        }
-
-        // Wall collision
-        if (this.x + this.radius > width) {
-          this.x = width - this.radius;
-          this.vx *= -friction;
-        } else if (this.x - this.radius < 0) {
-          this.x = this.radius;
-          this.vx *= -friction;
-        }
-      }
-
-      draw() {
-        if (!ctx) return;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-        // Shine effect
-        ctx.beginPath();
-        ctx.arc(this.x - this.radius * 0.3, this.y - this.radius * 0.3, this.radius * 0.2, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
-        ctx.fill();
-      }
-
-      impulse(mx: number, my: number) {
-        const dx = this.x - mx;
-        const dy = this.y - my;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < mouseForceRadius) {
-          const force = (mouseForceRadius - dist) / mouseForceRadius;
-          // Kick up and away
-          this.vx += (dx / dist) * force * 15;
-          this.vy -= force * 20; // Upward kick
-        }
-      }
-    }
-
-    const balls: Ball[] = [];
-    for (let i = 0; i < 15; i++) {
-      balls.push(new Ball());
-    }
-
-    const animate = () => {
-      ctx.clearRect(0, 0, width, height);
-      balls.forEach(ball => {
-        ball.update();
-        ball.draw();
-      });
-      requestAnimationFrame(animate);
-    };
-
-    const handleResize = () => {
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      ctx.scale(dpr, dpr);
-      width = rect.width;
-      height = rect.height;
-    };
-
-    const handleClick = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      const mx = e.clientX - rect.left;
-      const my = e.clientY - rect.top;
-      balls.forEach(b => b.impulse(mx, my));
-    }
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      const mx = e.clientX - rect.left;
-      const my = e.clientY - rect.top;
-      // Small nudge on hover
-      balls.forEach(b => {
-        const dx = b.x - mx;
-        const dy = b.y - my;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < b.radius + 20) {
-          b.vx += (dx / dist) * 1;
-          b.vy += (dy / dist) * 1;
-        }
-      });
-    }
-
-    window.addEventListener('resize', handleResize);
-    canvas.addEventListener('mousedown', handleClick);
-    canvas.addEventListener('mousemove', handleMouseMove);
-
-    animate();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      canvas.removeEventListener('mousedown', handleClick);
-      canvas.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} className="w-full h-full bg-transparent cursor-pointer" />;
-};
 
 export const Hero: React.FC = () => {
   const [isPolaroidHovered, setIsPolaroidHovered] = useState(false);
@@ -376,30 +202,20 @@ export const Hero: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Box 2: Physics Circles (Bouncing Balls) */}
+        {/* Box 2 & 3 Merged: Matrix Rain Animation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="md:col-span-4 h-[300px] bg-white dark:bg-[#111111] rounded-[2rem] overflow-hidden border border-slate-200 dark:border-white/5 relative group shadow-xl transition-colors duration-500"
+          className="md:col-span-7 h-[300px] bg-black rounded-[2rem] overflow-hidden border border-slate-200 dark:border-white/5 relative group shadow-xl transition-colors duration-500"
         >
-          <div className="absolute top-6 left-6 z-10 bg-white/40 dark:bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-slate-200 dark:border-white/10 pointer-events-none transition-opacity opacity-100 group-hover:opacity-0">
-            <span className="text-xs font-bold text-slate-800 dark:text-white/80 tracking-wider flex items-center gap-2">
-              <Circle size={12} className="text-accent-yellow fill-accent-yellow" />
-              GRAVITY
+          <div className="absolute top-6 left-6 z-10 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 pointer-events-none">
+            <span className="text-xs font-bold text-white tracking-wider flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              SYSTEM ACTIVE
             </span>
           </div>
-          <PhysicsCircles />
-        </motion.div>
-
-        {/* Box 3: Memory Game (History Sequences) */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="hidden md:block md:col-span-3 h-[300px] bg-slate-50 dark:bg-[#1A1A1A] rounded-[2rem] overflow-hidden border border-slate-200 dark:border-white/5 shadow-xl transition-colors duration-500"
-        >
-          <MemoryGame />
+          <MatrixRain />
         </motion.div>
 
       </div>
