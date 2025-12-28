@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDownRight, Move, Linkedin, Mail, Twitter } from 'lucide-react';
-import MatrixRain from './MatrixRain';
+import GradientWave from './GradientWave';
 
 // PhysicsCircles component removed
 
@@ -202,20 +202,21 @@ export const Hero: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Box 2 & 3 Merged: Matrix Rain Animation */}
+        {/* Box 2 & 3 Merged: Gradient Wave Animation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="md:col-span-7 h-[300px] bg-black rounded-[2rem] overflow-hidden border border-slate-200 dark:border-white/5 relative group shadow-xl transition-colors duration-500"
+          className="md:col-span-7 h-[300px] bg-white dark:bg-[#111] rounded-[2rem] overflow-hidden border border-slate-200 dark:border-white/5 relative group shadow-xl transition-colors duration-500"
         >
-          <div className="absolute top-6 left-6 z-10 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 pointer-events-none">
-            <span className="text-xs font-bold text-white tracking-wider flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              SYSTEM ACTIVE
-            </span>
+          <GradientWave />
+
+          <div className="absolute top-6 right-6 z-10 pointer-events-none">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+              <span className="w-2 h-2 rounded-full bg-[#651FFF] animate-pulse shadow-[0_0_10px_#651FFF]" />
+              <span className="text-[10px] font-bold text-slate-500 dark:text-white/70 tracking-widest uppercase">Kanna Active</span>
+            </div>
           </div>
-          <MatrixRain />
         </motion.div>
 
       </div>
