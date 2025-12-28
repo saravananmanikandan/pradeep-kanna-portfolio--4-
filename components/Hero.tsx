@@ -3,11 +3,15 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDownRight, Move, Linkedin, Mail, Twitter } from 'lucide-react';
 import GradientWave from './GradientWave';
+import { useContent } from '../context/ContentContext';
 
 // PhysicsCircles component removed
 
 
 export const Hero: React.FC = () => {
+  const { content } = useContent();
+
+  if (!content) return null;
   const [isPolaroidHovered, setIsPolaroidHovered] = useState(false);
 
   // Name Animation Variants
@@ -32,7 +36,7 @@ export const Hero: React.FC = () => {
     },
   };
 
-  const name = "Pradeep Kanna.".split("");
+  const name = content.hero.name.split("");
 
   const scrollToInitiatives = () => {
     const element = document.getElementById('initiatives');
@@ -67,7 +71,7 @@ export const Hero: React.FC = () => {
               className="flex items-center gap-3 mb-4 md:mb-6"
             >
               <span className="w-2 h-2 rounded-full bg-accent-green shadow-[0_0_10px_rgba(63,173,75,0.5)]"></span>
-              <p className="font-mono text-sm md:text-base text-slate-500 dark:text-white/50 tracking-widest uppercase">Hello, I'm</p>
+              <p className="font-mono text-sm md:text-base text-slate-500 dark:text-white/50 tracking-widest uppercase">{content.hero.greeting}</p>
             </motion.div>
 
             {/* Enhanced Name Animation */}
@@ -134,10 +138,10 @@ export const Hero: React.FC = () => {
           <div className="relative z-10 flex flex-col gap-4">
             <div>
               <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white leading-tight mb-1">
-                Engineer. Journalist. Historian.
+                {content.hero.roles.primary}
               </h3>
               <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-300 dark:text-white/30 leading-tight">
-                Startup Generalist.
+                {content.hero.roles.secondary}
               </p>
             </div>
 
@@ -186,7 +190,7 @@ export const Hero: React.FC = () => {
 
           <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 mt-6 md:mt-auto">
             <span className="px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-slate-200 dark:border-white/10 text-[10px] md:text-xs font-mono text-slate-500 dark:text-white/50 uppercase tracking-wider group-hover:bg-slate-50 dark:group-hover:bg-white/5 transition-colors whitespace-nowrap">
-              Based in India
+              {content.hero.location}
             </span>
 
             {/* Blog Button */}
@@ -194,7 +198,7 @@ export const Hero: React.FC = () => {
               onClick={scrollToInitiatives}
               className="flex items-center gap-2 md:gap-3 pl-3 pr-1.5 py-1.5 md:pl-4 md:pr-2 md:py-2 rounded-full bg-slate-100 dark:bg-white/5 hover:bg-brand-periwinkle hover:text-white dark:hover:bg-brand-periwinkle group/btn transition-all duration-300 cursor-pointer"
             >
-              <span className="text-xs md:text-sm font-medium text-slate-900 dark:text-white group-hover/btn:text-white whitespace-nowrap">Read Blog</span>
+              <span className="text-xs md:text-sm font-medium text-slate-900 dark:text-white group-hover/btn:text-white whitespace-nowrap">{content.hero.buttons.blog}</span>
               <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-white dark:bg-white/10 flex items-center justify-center text-slate-900 dark:text-white group-hover/btn:bg-white/20 group-hover/btn:text-white transition-all">
                 <ArrowDownRight size={14} className="md:w-4 md:h-4" />
               </div>
@@ -214,7 +218,7 @@ export const Hero: React.FC = () => {
           <div className="absolute top-6 right-6 z-10 pointer-events-none">
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
               <span className="w-2 h-2 rounded-full bg-[#651FFF] animate-pulse shadow-[0_0_10px_#651FFF]" />
-              <span className="text-[10px] font-bold text-slate-500 dark:text-white/70 tracking-widest uppercase">Kanna Active</span>
+              <span className="text-[10px] font-bold text-slate-500 dark:text-white/70 tracking-widest uppercase">{content.hero.status.active}</span>
             </div>
           </div>
         </motion.div>

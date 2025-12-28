@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Sun, Moon, Menu, X } from 'lucide-react';
+import { useContent } from '../context/ContentContext';
 
 interface NavbarProps {
   currentView: 'home' | 'family-history' | 'initiatives' | 'projects';
@@ -36,16 +37,22 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
     }
   };
 
-  const navItems = [
-    { name: 'Home', action: () => onNavigate('home') },
-    { name: 'Family History', action: () => onNavigate('family-history') },
-    { name: 'Projects', action: () => onNavigate('projects') },
-    { name: 'Initiatives', action: () => onNavigate('initiatives') },
-    { name: 'Contact', action: () => {
-      const footer = document.getElementById('contact');
-      if (footer) footer.scrollIntoView({ behavior: 'smooth' });
-    }},
-  ];
+  const { content } = useContent();
+
+  // Guard clause if content is not loaded yet (though App puts us in loading state)
+  if (!content) return null;
+
+  const navItems = content.navbar.items.map(item => ({
+    name: item.name,
+    action: () => {
+      if (item.id === 'contact') {
+        const footer = document.getElementById('contact');
+        if (footer) footer.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        onNavigate(item.id as any);
+      }
+    }
+  }));
 
   return (
     <header className="fixed top-6 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
@@ -56,8 +63,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
         className={`
           pointer-events-auto
           flex items-center gap-6 px-6 py-3 rounded-2xl border transition-all duration-300
-          ${isScrolled 
-            ? 'bg-white/80 dark:bg-brand-black/80 border-slate-200 dark:border-white/10 backdrop-blur-md shadow-2xl' 
+          ${isScrolled
+            ? 'bg-white/80 dark:bg-brand-black/80 border-slate-200 dark:border-white/10 backdrop-blur-md shadow-2xl'
             : 'bg-transparent border-transparent'}
         `}
       >
@@ -66,24 +73,22 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
             <button
               key={item.name}
               onClick={item.action}
-              className={`text-sm font-medium transition-colors relative group ${
-                (currentView === 'family-history' && item.name === 'Family History') || 
+              className={`text-sm font-medium transition-colors relative group ${(currentView === 'family-history' && item.name === 'Family History') ||
                 (currentView === 'initiatives' && item.name === 'Initiatives') ||
                 (currentView === 'projects' && item.name === 'Projects') ||
                 (currentView === 'home' && item.name === 'Home')
                 ? 'text-brand-periwinkle'
                 : 'text-slate-600 dark:text-slate-400 hover:text-brand-periwinkle dark:hover:text-brand-periwinkle'
-              }`}
+                }`}
             >
               {item.name}
-              <span className={`absolute -bottom-1 left-0 h-px bg-brand-periwinkle transition-all duration-300 ${
-                 (currentView === 'family-history' && item.name === 'Family History') || 
-                 (currentView === 'initiatives' && item.name === 'Initiatives') ||
-                 (currentView === 'projects' && item.name === 'Projects') ||
-                 (currentView === 'home' && item.name === 'Home')
-                 ? 'w-full'
-                 : 'w-0 group-hover:w-full'
-              }`} />
+              <span className={`absolute -bottom-1 left-0 h-px bg-brand-periwinkle transition-all duration-300 ${(currentView === 'family-history' && item.name === 'Family History') ||
+                (currentView === 'initiatives' && item.name === 'Initiatives') ||
+                (currentView === 'projects' && item.name === 'Projects') ||
+                (currentView === 'home' && item.name === 'Home')
+                ? 'w-full'
+                : 'w-0 group-hover:w-full'
+                }`} />
             </button>
           ))}
         </div>
@@ -96,8 +101,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
           >
             {isDark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-          
-          <button 
+
+          <button
             className="md:hidden p-2 text-slate-600 dark:text-slate-300"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
@@ -114,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
           exit={{ opacity: 0, scale: 0.9 }}
           className="pointer-events-auto absolute top-20 left-4 right-4 bg-white/95 dark:bg-brand-black/95 border border-slate-200 dark:border-white/10 backdrop-blur-xl rounded-2xl p-6 md:hidden flex flex-col gap-4 shadow-2xl"
         >
-           {navItems.map((item) => (
+          {navItems.map((item) => (
             <button
               key={item.name}
               onClick={() => {

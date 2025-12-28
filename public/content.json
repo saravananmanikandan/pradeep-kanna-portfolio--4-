@@ -1,0 +1,147 @@
+{
+    "navbar": {
+        "items": [
+            {
+                "name": "Home",
+                "id": "home"
+            },
+            {
+                "name": "Family History",
+                "id": "family-history"
+            },
+            {
+                "name": "Projects",
+                "id": "projects"
+            },
+            {
+                "name": "Initiatives",
+                "id": "initiatives"
+            },
+            {
+                "name": "Contact",
+                "id": "contact"
+            }
+        ]
+    },
+    "hero": {
+        "greeting": "Hello, I'm",
+        "name": "Pradeep Kanna.",
+        "roles": {
+            "primary": "Engineer. Journalist. Historian.",
+            "secondary": "Startup Generalist."
+        },
+        "location": "Based in India",
+        "buttons": {
+            "blog": "Read Blog"
+        },
+        "status": {
+            "active": "Kanna Active"
+        }
+    },
+    "about": {
+        "lines": [
+            "I am an Electrical and Electronics Engineer",
+            "bridging the gap between Technology, Policy, and Culture.",
+            "Currently serving as Chief of Staff at YNOS Venture Engine,",
+            "I guide the Indian startup ecosystem under Prof. Thillai Rajan,",
+            "translating data into actionable policy frameworks.",
+            "Previously, I managed strategic partnerships for India Speaks Ai",
+            "during the June 2024 Election Cycle,",
+            "leveraging technology for large-scale democratic outreach.",
+            "Beyond the digital realm, I am deeply rooted in history,",
+            "leading the Madurai Local History Group",
+            "to preserve the 19th-century heritage of my hometown.",
+            "I build systems that last."
+        ]
+    },
+    "experience": {
+        "title": "Selected Works",
+        "projects": [
+            {
+                "title": "YNOS Venture Engine",
+                "role": "Chief of Staff",
+                "description": "Guiding the Indian startup ecosystem under Prof. Thillai Rajan.",
+                "className": "md:col-span-2 md:row-span-2",
+                "gradient": "from-accent-blue/10 to-slate-50 dark:from-accent-blue/20 dark:to-slate-900/20",
+                "borderHover": "hover:border-accent-blue"
+            },
+            {
+                "title": "India Speaks Ai",
+                "role": "Election Tech & Outreach",
+                "description": "Managed strategic partnerships for the June 2024 Election Cycle.",
+                "className": "md:col-span-1 md:row-span-2",
+                "gradient": "from-accent-purple/10 to-slate-50 dark:from-accent-purple/20 dark:to-slate-900/20",
+                "borderHover": "hover:border-accent-purple"
+            },
+            {
+                "title": "Yellow Bag Foundation",
+                "role": "Sustainability Lead",
+                "description": "Empowering women self-help groups & promoting sustainable living globally.",
+                "className": "md:col-span-2 md:row-span-1",
+                "gradient": "from-accent-yellow/10 to-amber-50 dark:from-accent-yellow/20 dark:to-amber-900/10",
+                "borderHover": "hover:border-accent-yellow"
+            },
+            {
+                "title": "Pick Your Trail",
+                "role": "Experience Manager",
+                "description": "Enhancing international travel experiences.",
+                "className": "md:col-span-1 md:row-span-1",
+                "gradient": "from-accent-aqua/10 to-slate-50 dark:from-accent-aqua/20 dark:to-slate-900/20",
+                "borderHover": "hover:border-accent-aqua"
+            },
+            {
+                "title": "The Hindu Metroplus",
+                "role": "Journalism",
+                "description": "Travel, Lifestyle, & Tamil Heritage.",
+                "className": "md:col-span-1 md:row-span-1",
+                "gradient": "from-accent-red/10 to-slate-50 dark:from-accent-red/20 dark:to-slate-900/20",
+                "borderHover": "hover:border-accent-red"
+            }
+        ]
+    },
+    "initiatives": {
+        "title": "Initiatives & Contributions",
+        "subtitle": "Exploring the intersections of policy, culture, and technology through writing, public engagement, and journalism.",
+        "tabs": {
+            "media": "Media",
+            "events": "Events"
+        },
+        "emptyState": "No recent content found in this category.",
+        "readMore": "Read Full Story",
+        "exploreButton": "Explore All Initiatives"
+    },
+    "footer": {
+        "title": "Let's Connect.",
+        "subtitle": "Open for collaborations on Policy Research, Heritage Conservation, and Strategic Tech Initiatives.",
+        "copyright": "© 2025 Pradeep Kanna Ravichandran.\nAll Rights Reserved.",
+        "developer": {
+            "text": "Designed and Developed by Saravanan",
+            "url": "https://www.linkedin.com/in/saravanan-manikandan-641bb0212/"
+        },
+        "contact": {
+            "title": "Contact Details",
+            "email": "pradeepkanna585@gmail.com",
+            "phone": "+91 8903518024",
+            "name": "Pradeep Kanna Ravichandran",
+            "address": {
+                "line1": "Plot 26, Karthick Nagar, Park Town",
+                "line2": "Madurai 625017"
+            },
+            "links": {
+                "linkedin": {
+                    "text": "LinkedIn",
+                    "url": "https://www.linkedin.com/in/pradeep-kanna-302954301/"
+                },
+                "topmate": {
+                    "text": "Topmate",
+                    "url": "https://topmate.io/pradeep_kanna12/"
+                }
+            }
+        },
+        "ticker": [
+            "Recognition: Invited to PM's Meeting (Feb 2025)",
+            "Ministry of Textiles Report",
+            "Bharat Tex 2025"
+        ]
+    }
+}

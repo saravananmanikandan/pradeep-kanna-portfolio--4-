@@ -2,60 +2,26 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
-const projects = [
-  {
-    title: "YNOS Venture Engine",
-    role: "Chief of Staff",
-    description: "Guiding the Indian startup ecosystem under Prof. Thillai Rajan.",
-    className: "md:col-span-2 md:row-span-2", 
-    gradient: "from-accent-blue/10 to-slate-50 dark:from-accent-blue/20 dark:to-slate-900/20",
-    borderHover: "hover:border-accent-blue"
-  },
-  {
-    title: "India Speaks Ai",
-    role: "Election Tech & Outreach",
-    description: "Managed strategic partnerships for the June 2024 Election Cycle.",
-    className: "md:col-span-1 md:row-span-2",
-    gradient: "from-accent-purple/10 to-slate-50 dark:from-accent-purple/20 dark:to-slate-900/20",
-    borderHover: "hover:border-accent-purple"
-  },
-  {
-    title: "Yellow Bag Foundation",
-    role: "Sustainability Lead",
-    description: "Empowering women self-help groups & promoting sustainable living globally.",
-    className: "md:col-span-2 md:row-span-1",
-    gradient: "from-accent-yellow/10 to-amber-50 dark:from-accent-yellow/20 dark:to-amber-900/10",
-    borderHover: "hover:border-accent-yellow"
-  },
-  {
-    title: "Pick Your Trail",
-    role: "Experience Manager",
-    description: "Enhancing international travel experiences.",
-    className: "md:col-span-1 md:row-span-1",
-    gradient: "from-accent-aqua/10 to-slate-50 dark:from-accent-aqua/20 dark:to-slate-900/20",
-    borderHover: "hover:border-accent-aqua"
-  },
-  {
-    title: "The Hindu Metroplus",
-    role: "Journalism",
-    description: "Travel, Lifestyle, & Tamil Heritage.",
-    className: "md:col-span-1 md:row-span-1",
-    gradient: "from-accent-red/10 to-slate-50 dark:from-accent-red/20 dark:to-slate-900/20",
-    borderHover: "hover:border-accent-red"
-  },
-];
+import { useContent } from '../context/ContentContext';
+
+// Remove projects variable, access content inside component
+
 
 export const Experience: React.FC = () => {
+  const { content } = useContent();
+  if (!content) return null;
+  const projects = content.experience.projects;
+
   return (
     <section id="works" className="py-24 px-6 bg-[#F5F5F7] dark:bg-brand-black relative transition-colors duration-500">
       <div className="max-w-7xl mx-auto">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h2 className="font-display text-4xl font-bold mb-4 text-slate-900 dark:text-slate-100">Selected Works</h2>
+          <h2 className="font-display text-4xl font-bold mb-4 text-slate-900 dark:text-slate-100">{content.experience.title}</h2>
           <div className="h-1 w-20 bg-accent-green rounded-full shadow-[0_0_10px_rgba(63,173,75,0.4)]" />
         </motion.div>
 
@@ -78,7 +44,7 @@ export const Experience: React.FC = () => {
               `}
             >
               <div className="absolute inset-0 bg-white/40 dark:bg-white/0 group-hover:bg-white/60 dark:group-hover:bg-white/5 transition-colors duration-500" />
-              
+
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-4">
                   <span className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-500 border border-slate-200 dark:border-white/5 px-2 py-1 rounded-md bg-white/50 dark:bg-transparent">
