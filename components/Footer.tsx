@@ -102,17 +102,7 @@ export const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Footer Ticker */}
-      <div className="w-full bg-brand-periwinkle/5 border-y border-slate-200 dark:border-white/5 py-4 relative overflow-hidden flex items-center">
-        <div className="animate-ticker whitespace-nowrap flex gap-16 items-center">
-          {content.footer.ticker.map((item, i) => (
-            <React.Fragment key={i}>
-              <span className="text-slate-500 dark:text-slate-400 font-display text-lg uppercase tracking-wider hover:text-accent-purple transition-colors">{item}</span>
-              <span className={`w-2 h-2 rounded-full ${i % 3 === 0 ? 'bg-accent-yellow/50' : i % 3 === 1 ? 'bg-accent-red/50' : 'bg-accent-blue/50'}`}></span>
-            </React.Fragment>
-          ))}
-        </div>
-      </div>
+
     </footer>
   );
 };

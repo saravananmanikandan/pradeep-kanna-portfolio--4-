@@ -155,7 +155,7 @@
         },
         "contact": {
             "title": "Contact Details",
-            "email": "pradeepkanna585@gmail.com",
+            "email": "pr.kanna95@gmail.com",
             "phone": "+91 8903518024",
             "name": "Pradeep Kanna Ravichandran",
             "address": {
@@ -172,11 +172,6 @@
                     "url": "https://topmate.io/pradeep_kanna12/"
                 }
             }
-        },
-        "ticker": [
-            "Recognition: Invited to PM's Meeting (Feb 2025)",
-            "Ministry of Textiles Report",
-            "Bharat Tex 2025"
-        ]
+        }
     }
 }

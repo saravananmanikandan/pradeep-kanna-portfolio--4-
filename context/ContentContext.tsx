@@ -76,9 +76,7 @@ export interface ContentData {
       twitter: string;
       instagram: string;
     };
-    ticker: {
-      items: string[];
-    };
+
     developer: {
       text: string;
       url: string;
