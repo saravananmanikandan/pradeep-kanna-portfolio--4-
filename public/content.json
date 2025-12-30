@@ -23,6 +23,11 @@
             }
         ]
     },
+    "projectsPage": {
+        "title": "Projects.",
+        "subtitle": "A collection of technical, cultural, and social initiatives.",
+        "viewProject": "View Project"
+    },
     "hero": {
         "greeting": "Hello, I'm",
         "name": "Pradeep Kanna.",

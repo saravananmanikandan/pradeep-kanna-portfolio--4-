@@ -5,6 +5,11 @@ export interface ContentData {
   navbar: {
     items: { name: string; id: string }[];
   };
+  projectsPage: {
+    title: string;
+    subtitle: string;
+    viewProject: string;
+  };
   hero: {
     greeting: string;
     name: string;

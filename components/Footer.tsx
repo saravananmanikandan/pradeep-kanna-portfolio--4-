@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer id="contact" className="bg-[#F5F5F7] dark:bg-brand-black pt-24 pb-0 border-t border-slate-200 dark:border-white/5 transition-colors duration-500">
-      <div className="max-w-7xl mx-auto px-6 mb-24">
+      <div className="max-w-7xl mx-auto px-6 py-24">
         <div className="flex flex-col md:flex-row gap-12 md:gap-24">
 
           {/* Left Side: Brand & Context */}

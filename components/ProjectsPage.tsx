@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Loader2, Play } from 'lucide-react';
 import { ProjectPost } from '../types';
+import { useContent } from '../context/ContentContext';
 
 export const ProjectsPage: React.FC = () => {
+    const { content } = useContent();
     const [projects, setProjects] = useState<ProjectPost[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -33,6 +35,8 @@ export const ProjectsPage: React.FC = () => {
         return null;
     };
 
+    if (!content) return null;
+
     if (loading) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-[#F5F5F7] dark:bg-brand-black">
@@ -45,20 +49,20 @@ export const ProjectsPage: React.FC = () => {
         <div className="min-h-screen bg-[#F5F5F7] dark:bg-brand-black pt-32 pb-24 px-6 transition-colors duration-500">
             {/* Header */}
             <div className="max-w-7xl mx-auto mb-20 text-center">
-                <motion.h1 
+                <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="font-display text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6"
                 >
-                    Projects.
+                    {content.projectsPage.title}
                 </motion.h1>
-                <motion.p 
+                <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
                     className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
                 >
-                    A collection of technical, cultural, and social initiatives.
+                    {content.projectsPage.subtitle}
                 </motion.p>
             </div>
 
@@ -71,7 +75,7 @@ export const ProjectsPage: React.FC = () => {
                     const imageUrl = getImageUrl(project);
 
                     return (
-                        <motion.a 
+                        <motion.a
                             key={project.id}
                             href={url}
                             target="_blank"
@@ -84,8 +88,8 @@ export const ProjectsPage: React.FC = () => {
                             {/* Image Container */}
                             <div className="relative h-64 overflow-hidden bg-slate-100 dark:bg-white/5">
                                 {imageUrl ? (
-                                    <img 
-                                        src={imageUrl} 
+                                    <img
+                                        src={imageUrl}
                                         alt={title}
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
@@ -95,7 +99,7 @@ export const ProjectsPage: React.FC = () => {
                                     </div>
                                 )}
                                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
-                                
+
                                 <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                                     <ArrowUpRight size={20} className="text-slate-900 dark:text-white" />
                                 </div>
@@ -103,16 +107,16 @@ export const ProjectsPage: React.FC = () => {
 
                             {/* Content */}
                             <div className="p-8 flex flex-col flex-grow">
-                                <h3 
+                                <h3
                                     className="font-display text-2xl font-bold text-slate-900 dark:text-white mb-3"
                                     dangerouslySetInnerHTML={{ __html: title }}
                                 />
                                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm line-clamp-4 flex-grow">
                                     {description}
                                 </p>
-                                
+
                                 <div className="mt-6 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center text-sm font-medium text-brand-periwinkle group-hover:text-accent-blue transition-colors">
-                                    View Project <ArrowUpRight size={16} className="ml-2" />
+                                    {content.projectsPage.viewProject} <ArrowUpRight size={16} className="ml-2" />
                                 </div>
                             </div>
                         </motion.a>
