@@ -24,6 +24,11 @@ export interface ContentData {
     status: {
       active: string;
     };
+    socials: {
+      linkedin: string;
+      email: string;
+      topmate: string;
+    };
   };
   about: {
     lines: string[];

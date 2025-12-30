@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Loader2, ArrowUpRight, BookOpen } from 'lucide-react';
 import { BlogPost } from '../types';
+import { WP_API_ENDPOINT } from '../config';
 
 // Helper to extract image src from content string
 const extractImage = (content: string) => {
@@ -19,15 +20,15 @@ const stripHtml = (html: string) => {
 
 const ContentCard: React.FC<{ item: BlogPost; type: 'event' | 'article' | 'recent' }> = ({ item, type }) => {
     const imageUrl = item.content?.rendered ? extractImage(item.content.rendered) : null;
-    const cleanExcerpt = item.excerpt?.rendered 
-        ? stripHtml(item.excerpt.rendered) 
-        : item.content?.rendered 
+    const cleanExcerpt = item.excerpt?.rendered
+        ? stripHtml(item.excerpt.rendered)
+        : item.content?.rendered
             ? stripHtml(item.content.rendered).substring(0, 150) + '...'
             : '';
 
     // Prioritize ACF post_url for articles
     const linkUrl = item.acf?.post_url || item.link;
-    
+
     // Only articles (Hindu) should link out. Events are static.
     const isClickable = type === 'article';
     const Wrapper = isClickable ? motion.a : motion.div;
@@ -38,7 +39,7 @@ const ContentCard: React.FC<{ item: BlogPost; type: 'event' | 'article' | 'recen
     } : {};
 
     return (
-        <Wrapper 
+        <Wrapper
             {...wrapperProps}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -57,9 +58,9 @@ const ContentCard: React.FC<{ item: BlogPost; type: 'event' | 'article' | 'recen
                     relative overflow-hidden bg-slate-100 dark:bg-white/5
                     ${type === 'recent' ? 'md:w-1/2 h-64 md:h-full' : 'h-48 w-full'}
                 `}>
-                    <img 
-                        src={imageUrl} 
-                        alt="Featured" 
+                    <img
+                        src={imageUrl}
+                        alt="Featured"
                         className={`w-full h-full object-cover transition-transform duration-700 ${isClickable ? 'group-hover:scale-105' : ''}`}
                     />
                     {isClickable && <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60" />}
@@ -73,14 +74,14 @@ const ContentCard: React.FC<{ item: BlogPost; type: 'event' | 'article' | 'recen
                 ${!imageUrl && type !== 'recent' ? 'h-[300px]' : ''}
             `}>
                 <div>
-                     <div className="flex justify-between items-center mb-4">
+                    <div className="flex justify-between items-center mb-4">
                         <span className="text-xs font-bold tracking-widest uppercase text-brand-periwinkle">
                             {new Date(item.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
                         </span>
                         {type === 'recent' && (
-                             <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider bg-brand-periwinkle/10 text-brand-periwinkle rounded-full">
+                            <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider bg-brand-periwinkle/10 text-brand-periwinkle rounded-full">
                                 New
-                             </span>
+                            </span>
                         )}
                     </div>
 
@@ -116,9 +117,9 @@ export const InitiativesPage: React.FC = () => {
             try {
                 // Fetch generous amounts to show "all content"
                 const [recentRes, eventsRes, hinduRes] = await Promise.all([
-                    fetch('https://pradeepkanna.com/wp-json/wp/v2/recent_events?per_page=10'),
-                    fetch('https://pradeepkanna.com/wp-json/wp/v2/events?per_page=10'),
-                    fetch('https://pradeepkanna.com/wp-json/wp/v2/hindu_article?per_page=10')
+                    fetch(`${WP_API_ENDPOINT}/recent_events?per_page=10`),
+                    fetch(`${WP_API_ENDPOINT}/events?per_page=10`),
+                    fetch(`${WP_API_ENDPOINT}/hindu_article?per_page=10`)
                 ]);
 
                 setData({
@@ -147,14 +148,14 @@ export const InitiativesPage: React.FC = () => {
         <div className="min-h-screen bg-[#F5F5F7] dark:bg-brand-black pt-32 pb-24 px-6 transition-colors duration-500">
             {/* Header */}
             <div className="max-w-7xl mx-auto mb-20 text-center">
-                <motion.h1 
+                <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="font-display text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6"
                 >
                     Initiatives.
                 </motion.h1>
-                <motion.p 
+                <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
@@ -165,11 +166,11 @@ export const InitiativesPage: React.FC = () => {
             </div>
 
             <div className="max-w-7xl mx-auto space-y-32">
-                
+
                 {/* Recent Events Section */}
                 {data.recentEvents.length > 0 && (
                     <section>
-                         <div className="flex items-center gap-4 mb-12">
+                        <div className="flex items-center gap-4 mb-12">
                             <h2 className="font-display text-3xl font-bold text-slate-900 dark:text-white">Recent Highlights</h2>
                             <div className="h-px flex-1 bg-slate-200 dark:bg-white/10" />
                         </div>
@@ -216,9 +217,9 @@ export const InitiativesPage: React.FC = () => {
                         <p className="text-slate-300 text-lg max-w-2xl mx-auto mb-10">
                             For deeper dives into technology policy and historical analysis, follow my long-form writing on Medium.
                         </p>
-                        <a 
-                            href="https://medium.com/@pr.kanna95" 
-                            target="_blank" 
+                        <a
+                            href="https://medium.com/@pr.kanna95"
+                            target="_blank"
                             rel="noreferrer"
                             className="inline-flex items-center gap-3 px-8 py-4 bg-white text-slate-900 rounded-full font-bold hover:bg-brand-periwinkle hover:text-white transition-colors duration-300"
                         >

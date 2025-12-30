@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowDownRight, Move, Linkedin, Mail, Twitter } from 'lucide-react';
 import GradientWave from './GradientWave';
 import { useContent } from '../context/ContentContext';
+import { API_BASE_URL } from '../config';
 
 // PhysicsCircles component removed
 
@@ -110,7 +111,7 @@ export const Hero: React.FC = () => {
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-12 bg-accent-blue/30 rotate-12 backdrop-blur-sm z-20 rounded-sm"></div>
             <div className="w-full aspect-[4/5] bg-slate-200 overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-500">
               <img
-                src="https://pradeepkanna.com/wp-content/uploads/2025/02/IMG_20250115_113152600_HDR-scaled.jpg"
+                src={`${API_BASE_URL}/wp-content/uploads/2025/02/IMG_20250115_113152600_HDR-scaled.jpg`}
                 alt="Pradeep"
                 className="w-full h-full object-cover"
               />
@@ -148,7 +149,7 @@ export const Hero: React.FC = () => {
             {/* Social Icons */}
             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               <a
-                href="https://linkedin.com/in/pradeepkanna"
+                href={content.hero.socials.linkedin}
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-white/5 hover:bg-[#0077b5] hover:text-white dark:hover:bg-[#0077b5] text-slate-500 dark:text-slate-400 transition-all duration-300"
@@ -157,7 +158,7 @@ export const Hero: React.FC = () => {
                 <Linkedin size={18} />
               </a>
               <a
-                href="mailto:pradeepkanna585@gmail.com"
+                href={content.hero.socials.email}
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-white/5 hover:bg-accent-red hover:text-white dark:hover:bg-accent-red text-slate-500 dark:text-slate-400 transition-all duration-300"
                 title="Email"
               >
@@ -165,7 +166,7 @@ export const Hero: React.FC = () => {
               </a>
 
               <a
-                href="https://topmate.io/pradeep_kanna12/"
+                href={content.hero.socials.topmate}
                 target="_blank"
                 rel="noreferrer"
                 className="h-10 px-4 flex items-center justify-center rounded-full bg-[#000] dark:bg-white hover:bg-accent-green hover:text-white dark:hover:bg-accent-green text-slate-500 dark:text-slate-400 transition-all duration-300 group/topmate"

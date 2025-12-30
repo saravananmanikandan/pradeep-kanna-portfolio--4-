@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Loader2, Calendar, Newspaper } from 'lucide-react';
 import { BlogPost } from '../types';
 import { useContent } from '../context/ContentContext';
+import { WP_API_ENDPOINT } from '../config';
 
 
 type TabType = 'events' | 'media';
@@ -137,8 +138,8 @@ export const Initiatives: React.FC<{ onNavigate?: (page: 'initiatives') => void 
     const fetchData = async () => {
       try {
         const [eventsRes, hinduRes] = await Promise.all([
-          fetch('https://pradeepkanna.com/wp-json/wp/v2/events?per_page=3'),
-          fetch('https://pradeepkanna.com/wp-json/wp/v2/hindu_article?per_page=3')
+          fetch(`${WP_API_ENDPOINT}/events?per_page=3`),
+          fetch(`${WP_API_ENDPOINT}/hindu_article?per_page=3`)
         ]);
 
         const events = await eventsRes.json();

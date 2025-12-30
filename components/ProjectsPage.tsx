@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight, Loader2, Play } from 'lucide-react';
 import { ProjectPost } from '../types';
 import { useContent } from '../context/ContentContext';
+import { WP_API_ENDPOINT } from '../config';
 
 export const ProjectsPage: React.FC = () => {
     const { content } = useContent();
@@ -13,7 +14,7 @@ export const ProjectsPage: React.FC = () => {
         const fetchProjects = async () => {
             try {
                 // Fetch projects with embedded media to get the featured image
-                const response = await fetch('https://pradeepkanna.com/wp-json/wp/v2/project?_embed');
+                const response = await fetch(`${WP_API_ENDPOINT}/project?_embed`);
                 if (!response.ok) throw new Error('Failed to fetch projects');
                 const data = await response.json();
                 setProjects(data);

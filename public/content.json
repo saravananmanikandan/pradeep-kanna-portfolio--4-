@@ -41,6 +41,11 @@
         },
         "status": {
             "active": "Kanna Active"
+        },
+        "socials": {
+            "linkedin": "https://in.linkedin.com/in/pradeep-kanna-302954301",
+            "email": "mailto:pr.kanna95@gmail.com",
+            "topmate": "https://topmate.io/pradeep_kanna12/"
         }
     },
     "about": {
