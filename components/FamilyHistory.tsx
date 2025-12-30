@@ -99,7 +99,7 @@ export const FamilyHistory: React.FC = () => {
               <img
                 src={hero.image}
                 alt="Family History"
-                className="w-full h-auto object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+                className="w-full h-auto object-cover shadow-2xl rounded-2xl"
               />
             </motion.div>
           )}
