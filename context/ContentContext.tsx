@@ -54,6 +54,7 @@ export interface ContentData {
       className: string;
       gradient: string;
       borderHover: string;
+      link: string;
     }[];
   };
   initiatives: {

@@ -32,7 +32,7 @@
         "greeting": "Hello, I'm",
         "name": "Pradeep Kanna.",
         "roles": {
-            "primary": "Engineer. Journalist. Historian.",
+            "primary": "Engineer, Journalist,Local Historian,",
             "secondary": "Startup Generalist."
         },
         "location": "Based in India",
@@ -45,18 +45,17 @@
     },
     "about": {
         "lines": [
-            "I am an Electrical and Electronics Engineer",
-            "bridging the gap between Technology, Policy, and Culture.",
-            "Currently serving as Chief of Staff at YNOS Venture Engine,",
-            "I guide the Indian startup ecosystem under Prof. Thillai Rajan,",
-            "translating data into actionable policy frameworks.",
-            "Previously, I managed strategic partnerships for India Speaks Ai",
-            "during the June 2024 Election Cycle,",
-            "leveraging technology for large-scale democratic outreach.",
+            "I am an Electrical and Electronics Engineer currently serving",
+            "as Chief of Staff at YNOS Venture Engine, IIT Madras Research Park.",
+            "I am a consultant for the Indian startup ecosystem under",
+            "Prof. Thillai Rajan, translating data into actionable policy frameworks.",
+            "Previously, I managed strategic partnerships for India Speaks AI,",
+            "a voice processing company, leveraging technology",
+            "for large-scale democratic outreach.",
             "Beyond the digital realm, I am deeply rooted in history,",
-            "leading the Madurai Local History Group",
-            "to preserve the 19th-century heritage of my hometown.",
-            "I build systems that last."
+            "leading the Madurai Local History Group to connect",
+            "with the 2000 year old heritage of my hometown.",
+            "I like to build systems that last."
         ]
     },
     "familyHistory": {
@@ -101,41 +100,37 @@
                 "title": "YNOS Venture Engine",
                 "role": "Chief of Staff",
                 "description": "Guiding the Indian startup ecosystem under Prof. Thillai Rajan.",
-                "className": "md:col-span-2 md:row-span-2",
+                "className": "md:col-span-2 md:row-span-1",
                 "gradient": "from-accent-blue/10 to-slate-50 dark:from-accent-blue/20 dark:to-slate-900/20",
-                "borderHover": "hover:border-accent-blue"
+                "borderHover": "hover:border-accent-blue",
+                "link": "#"
             },
             {
                 "title": "India Speaks Ai",
                 "role": "Election Tech & Outreach",
                 "description": "Managed strategic partnerships for the June 2024 Election Cycle.",
-                "className": "md:col-span-1 md:row-span-2",
+                "className": "md:col-span-1 md:row-span-1",
                 "gradient": "from-accent-purple/10 to-slate-50 dark:from-accent-purple/20 dark:to-slate-900/20",
-                "borderHover": "hover:border-accent-purple"
+                "borderHover": "hover:border-accent-purple",
+                "link": "#"
             },
             {
                 "title": "Yellow Bag Foundation",
                 "role": "Sustainability Lead",
                 "description": "Empowering women self-help groups & promoting sustainable living globally.",
-                "className": "md:col-span-2 md:row-span-1",
-                "gradient": "from-accent-yellow/10 to-amber-50 dark:from-accent-yellow/20 dark:to-amber-900/10",
-                "borderHover": "hover:border-accent-yellow"
-            },
-            {
-                "title": "Pick Your Trail",
-                "role": "Experience Manager",
-                "description": "Enhancing international travel experiences.",
                 "className": "md:col-span-1 md:row-span-1",
-                "gradient": "from-accent-aqua/10 to-slate-50 dark:from-accent-aqua/20 dark:to-slate-900/20",
-                "borderHover": "hover:border-accent-aqua"
+                "gradient": "from-accent-yellow/10 to-amber-50 dark:from-accent-yellow/20 dark:to-amber-900/10",
+                "borderHover": "hover:border-accent-yellow",
+                "link": "#"
             },
             {
                 "title": "The Hindu Metroplus",
                 "role": "Journalism",
                 "description": "Travel, Lifestyle, & Tamil Heritage.",
-                "className": "md:col-span-1 md:row-span-1",
+                "className": "md:col-span-2 md:row-span-1",
                 "gradient": "from-accent-red/10 to-slate-50 dark:from-accent-red/20 dark:to-slate-900/20",
-                "borderHover": "hover:border-accent-red"
+                "borderHover": "hover:border-accent-red",
+                "link": "#"
             }
         ]
     },

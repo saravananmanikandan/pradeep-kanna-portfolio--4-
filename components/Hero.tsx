@@ -163,15 +163,7 @@ export const Hero: React.FC = () => {
               >
                 <Mail size={18} />
               </a>
-              <a
-                href="https://x.com/kannatweets"
-                target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-white/5 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-slate-500 dark:text-slate-400 transition-all duration-300"
-                title="Twitter / X"
-              >
-                <Twitter size={18} />
-              </a>
+
               <a
                 href="https://topmate.io/pradeep_kanna12/"
                 target="_blank"
