@@ -54,6 +54,41 @@
             "I build systems that last."
         ]
     },
+    "familyHistory": {
+        "hero": {
+            "label": "The Foundation",
+            "title": "Roots, Resilience, \nand Renewal.",
+            "description": "From the literary halls of Madurai to the tech corridors of Silicon Valley, our journey is defined by a commitment to knowledge and community.",
+            "image": "/family.jpeg"
+        },
+        "timeline": [
+            {
+                "year": "Early 20th Century",
+                "title": "Literary Stewardship",
+                "desc": "Descendant of Tamil Scholar Karmega Konar, namesake of the arterial road in Madurai. His work in preserving Tamil literature established a family tradition of cultural stewardship and educational excellence.",
+                "icon": "BookOpen",
+                "align": "left",
+                "accentColorClass": "text-accent-yellow"
+            },
+            {
+                "year": "1970s - 1990s",
+                "title": "Global Migration & Education",
+                "desc": "A period marked by resilience—repatriation from Burma and Vietnam led to new beginnings. The family rebuilt through education, producing PhD holders and Silicon Valley professionals who bridged the East and West.",
+                "icon": "Globe",
+                "align": "right",
+                "accentColorClass": "text-accent-blue"
+            },
+            {
+                "year": "Present Day",
+                "title": "Preserving Madurai",
+                "desc": "The cycle continues with the Madurai Local History Group. We are actively documenting, restoring, and revitalizing the architectural narrative of one of the world's oldest living cities, ensuring the past informs the future.",
+                "icon": "Calendar",
+                "align": "left",
+                "accentColorClass": "text-accent-green"
+            }
+        ],
+        "quote": "History is not just about the past; it is the blueprint for the systems we build today."
+    },
     "experience": {
         "title": "Selected Works",
         "projects": [

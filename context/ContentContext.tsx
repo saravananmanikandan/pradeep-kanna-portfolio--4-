@@ -23,6 +23,23 @@ export interface ContentData {
   about: {
     lines: string[];
   };
+  familyHistory: {
+    hero: {
+      label: string;
+      title: string;
+      description: string;
+      image: string;
+    };
+    timeline: {
+      year: string;
+      title: string;
+      desc: string;
+      icon: string;
+      align: 'left' | 'right';
+      accentColorClass: string;
+    }[];
+    quote: string;
+  };
   experience: {
     title: string;
     projects: {
