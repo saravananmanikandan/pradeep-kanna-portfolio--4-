@@ -94,43 +94,43 @@
         "quote": "History is not just about the past; it is the blueprint for the systems we build today."
     },
     "experience": {
-        "title": "Selected Works",
+        "title": "Organization Associated",
         "projects": [
             {
-                "title": "YNOS Venture Engine",
+                "title": "YNOS Venture Engine - IITM",
                 "role": "Chief of Staff",
                 "description": "Guiding the Indian startup ecosystem under Prof. Thillai Rajan.",
                 "className": "md:col-span-2 md:row-span-1",
-                "gradient": "from-accent-blue/10 to-slate-50 dark:from-accent-blue/20 dark:to-slate-900/20",
+                "gradient": "from-accent-blue/10 via-slate-50/5 to-slate-50 dark:from-accent-blue/20 dark:via-[#1A1A1A]/5 dark:to-slate-900/20",
                 "borderHover": "hover:border-accent-blue",
-                "link": "#"
+                "link": "https://ynos.in"
             },
             {
                 "title": "India Speaks Ai",
                 "role": "Election Tech & Outreach",
                 "description": "Managed strategic partnerships for the June 2024 Election Cycle.",
                 "className": "md:col-span-1 md:row-span-1",
-                "gradient": "from-accent-purple/10 to-slate-50 dark:from-accent-purple/20 dark:to-slate-900/20",
+                "gradient": "from-accent-purple/10 via-slate-50/5 to-slate-50 dark:from-accent-purple/20 dark:via-[#1A1A1A]/5 dark:to-slate-900/20",
                 "borderHover": "hover:border-accent-purple",
-                "link": "#"
+                "link": "https://indiaspeaks.ai/"
             },
             {
                 "title": "Yellow Bag Foundation",
                 "role": "Sustainability Lead",
                 "description": "Empowering women self-help groups & promoting sustainable living globally.",
                 "className": "md:col-span-1 md:row-span-1",
-                "gradient": "from-accent-yellow/10 to-amber-50 dark:from-accent-yellow/20 dark:to-amber-900/10",
+                "gradient": "from-accent-yellow/10 via-amber-50/5 to-amber-50 dark:from-accent-yellow/20 dark:via-[#1A1A1A]/5 dark:to-amber-900/10",
                 "borderHover": "hover:border-accent-yellow",
-                "link": "#"
+                "link": "https://theyellowbag.org/"
             },
             {
                 "title": "The Hindu Metroplus",
                 "role": "Journalism",
                 "description": "Travel, Lifestyle, & Tamil Heritage.",
                 "className": "md:col-span-2 md:row-span-1",
-                "gradient": "from-accent-red/10 to-slate-50 dark:from-accent-red/20 dark:to-slate-900/20",
+                "gradient": "from-accent-red/10 via-slate-50/5 to-slate-50 dark:from-accent-red/20 dark:via-[#1A1A1A]/5 dark:to-slate-900/20",
                 "borderHover": "hover:border-accent-red",
-                "link": "#"
+                "link": "https://www.thehindu.com/profile/author/pradeep-kanna-6909/"
             }
         ]
     },
