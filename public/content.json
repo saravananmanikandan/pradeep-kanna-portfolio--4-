@@ -62,7 +62,7 @@
         "hero": {
             "label": "The Foundation",
             "title": "Roots, Resilience, \nand Renewal.",
-            "description": "From the literary halls of Madurai to the tech corridors of Silicon Valley, our journey is defined by a commitment to knowledge and community.",
+            "description": " From the literary halls of Madurai to the tech corridors of Silicon Valley, our family journey is defined by a commitment to knowledge.",
             "image": "/family.jpeg"
         },
         "timeline": [
@@ -84,8 +84,8 @@
             },
             {
                 "year": "Present Day",
-                "title": "Preserving Madurai",
-                "desc": "The cycle continues with the Madurai Local History Group. We are actively documenting, restoring, and revitalizing the architectural narrative of one of the world's oldest living cities, ensuring the past informs the future.",
+                "title": "Globalised.Liberalised Tamil Family",
+                "desc": "My family’s century old long march in the organised academic spaces has yielded rich fruits to me in terms of intellectual capital.I spend my time figuring out my life in hope of being remembered for a long time after I am gone for all the good reasons.",
                 "icon": "Calendar",
                 "align": "left",
                 "accentColorClass": "text-accent-green"
