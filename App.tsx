@@ -10,6 +10,8 @@ import { ProjectsPage } from './components/ProjectsPage';
 import { Footer } from './components/Footer';
 import { ContentProvider, useContent } from './context/ContentContext';
 import { Loader2 } from 'lucide-react';
+import { Analytics } from './components/Analytics';
+
 
 function AppContent() {
   const [view, setView] = useState<'home' | 'family-history' | 'initiatives' | 'projects'>('home');
@@ -47,7 +49,9 @@ function AppContent() {
 
   return (
     <div className="bg-[#F5F5F7] dark:bg-brand-black min-h-screen text-slate-900 dark:text-slate-200 selection:bg-brand-periwinkle/30 selection:text-brand-black dark:selection:text-white transition-colors duration-500">
+      <Analytics />
       <Navbar currentView={view} onNavigate={handleNavigate} />
+
 
       <main>
         {view === 'home' ? (
