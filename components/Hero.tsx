@@ -77,12 +77,13 @@ export const Hero: React.FC = () => {
 
             {/* Enhanced Name Animation */}
             <motion.div
-              className="font-display font-bold text-slate-900 dark:text-white leading-[0.9] tracking-tighter mix-blend-screen overflow-hidden flex flex-wrap justify-center"
-              style={{ fontSize: 'clamp(3rem, 12vw, 10rem)' }} // Responsive sizing
+              className="font-display font-bold text-slate-900 dark:text-white leading-[0.9] tracking-tighter mix-blend-screen overflow-hidden flex flex-nowrap justify-center whitespace-nowrap"
+              style={{ fontSize: 'clamp(2.5rem, 11vw, 10rem)' }} // Slightly smaller base/clamp for mobile and forced nowrap
               variants={containerVars}
               initial="hidden"
               animate="visible"
             >
+
               {name.map((char, index) => (
                 <motion.span
                   key={index}
